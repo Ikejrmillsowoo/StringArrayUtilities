@@ -17,7 +17,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return array[array.length-1];
+        return array[1];
     }
 
     /**
