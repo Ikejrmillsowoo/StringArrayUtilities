@@ -1,9 +1,6 @@
 package com.zipcodewilmington;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -128,10 +125,15 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+        ArrayList<String> arr = new ArrayList<>();
+        arr.addAll(List.of(array));
+        arr.remove(valueToRemove);
+        Arrays.copyOf(arr.toArray(), arr.size(), String[].class);
 
+        //another option can be
+        //String k[] = arr.toArray(new String[arr.size()])
 
-
-        return null;
+        return Arrays.copyOf(arr.toArray(), arr.size(), String[].class);
 
     }
 
@@ -140,13 +142,31 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(array[i+1])){
+        ArrayList<String> arr = new ArrayList<>();
+       // arr.addAll(List.of(array));
+        int start = 0;
+        int compare = 0;
 
+        while (compare <  array.length){
+            if (array[start] == array[compare]){
+                compare++;
+            }else if (array[compare] != array[start] || compare == array.length-1){
+                arr.add(array[start]);
+                start = compare;
+                compare++;
             }
         }
-
-        return null;
+        arr.add(array[compare-1]);
+//        for (int i = 0; i < array.length; i++) {
+//            if (array[i] == (array[i+1])){
+//                arr.add(array[i]);
+//                arr
+//                i++;
+//            }
+//        }
+//
+//        String [] finalArr = arr.toArray(new String[arr.size()]);
+        return arr.toArray(new String[arr.size()]);
     }
 
     /**
