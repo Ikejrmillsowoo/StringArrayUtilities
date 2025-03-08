@@ -78,10 +78,10 @@ public class StringArrayUtils {
         ArrayList<String> arrSame = new ArrayList<>();
         ArrayList<String> arrReverse = new ArrayList<>();
         arrSame.addAll(Arrays.asList(array));
+        // reverses array and returns void
         arrReverse.addAll(Arrays.asList(array));
-        System.out.println(arrReverse);
         Collections.reverse(arrReverse);
-        System.out.println(arrReverse);
+
     return arrSame.equals(arrReverse);
     }
 
