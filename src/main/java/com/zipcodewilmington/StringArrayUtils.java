@@ -1,6 +1,9 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Created by leon on 1/29/18.
@@ -71,12 +74,15 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        StringBuilder sb = new StringBuilder(Arrays.toString(array).replaceAll("[^a-zA-Z0-9]",""));
-        System.out.println(sb);
 
-        sb.reverse();
-        return true;
-
+        ArrayList<String> arrSame = new ArrayList<>();
+        ArrayList<String> arrReverse = new ArrayList<>();
+        arrSame.addAll(Arrays.asList(array));
+        arrReverse.addAll(Arrays.asList(array));
+        System.out.println(arrReverse);
+        Collections.reverse(arrReverse);
+        System.out.println(arrReverse);
+    return arrSame.equals(arrReverse);
     }
 
     /**
@@ -84,23 +90,21 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-       boolean count = false;
+        String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        ArrayList<String> contractValue = new ArrayList<>();
+        contractValue.addAll(Arrays.asList(alphabet));
+
 
         for (int i = 0; i< array.length; i++){
             String [] strToCheck = array[i].split("");
             //boolean count = false;
-           for (int c = 0; c < strToCheck.length-1; c++){
-                if (strToCheck[i].equals(alphabet[c])){
-                    count= true;
-                }
+           for (int c = 0; c < strToCheck.length; c++){
+                contractValue.remove(strToCheck[c]);
+                contractValue.remove(strToCheck[c].toUpperCase());
            }
        }
-        if (count){
-            return true;
-        } else {
-            return false;
-        }
+//        return count;
+        return contractValue.isEmpty();
     }
 
     /**
@@ -124,7 +128,11 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+
+
+
         return null;
+
     }
 
     /**
@@ -132,6 +140,12 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(array[i+1])){
+
+            }
+        }
+
         return null;
     }
 
